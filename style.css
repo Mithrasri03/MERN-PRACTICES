@@ -1,0 +1,44 @@
+.bg-img {
+    background-image: url("./assets/todolistbg.webp");
+    background-repeat: no-repeat;
+    width: 700px; height: 700px;
+    background-size: contain;
+    background-position: center;
+    text-align: center;
+
+    
+} 
+
+.color{
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size:16px;
+}
+
+.head{
+    font-weight: 700;
+}
+
+.line{
+    font-weight: 700;
+}
+
+
+.btn{
+    background-color: orange;
+    color: white;
+}
+
+.msg{
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
