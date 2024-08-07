@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form id="form">
+        <h1>Update Password</h1>
+        <label for="new">NEW PASSWORD</label>
+        <input type="password" placeholder="Create New Password" id="new" >
+        <p id="newerror"></p>
+
+        <label for="confirm">CONFIRM PASSWORD</label>
+        <input type="password" placeholder="Confirm Password" id="confirm" >
+        <p id="confirmerror"></p>
+
+        <button>Update</button>
+    </form>
+
+    <script>
+        const form= document.getElementById("form")
+
+        const newElement = document.getElementById("new")
+        const confirmElement = document.getElementById("confirm")
+
+        const newerror = document.getElementById("newerror")
+        const confirmerror = document.getElementById("confirmerror")
+
+        newElement.addEventListener("blur",(f) => {
+          if(f.target.value === ""){
+            newerror.textContent="*Required"
+            newerror.style.color="red"
+          }
+          else{
+            newerror.textContent=" "
+          }
+        })
+
+        confirmElement.addEventListener("blur",(f) => {
+          if(f.target.value === ""){
+            confirmerror.textContent="*Required"
+            confirmerror.style.color="red"
+          }
+          else{
+            confirmerror.textContent=" "
+          }
+        })
+
+       
+        const validFormData = (n,c) =>{
+          console.log("Valid Method",n,c)  
+          
+          const newregex = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+          
+          //console.log("ANS:",n.match(newregex))
+          if(n === ""){
+            newerror.textContent="*Required"
+            newerror.style.color="red"
+          }
+
+          if(c === ""){
+            confirmerror.textContent="*Required"
+            confirmerror.style.color="red"
+
+          }
+
+          if(n.match(newregex) !== null){
+            console.log("Valid New Password")
+          }
+          else{
+            console.log("Invalid New Password")
+          }
+
+        }
+
+        const saveFormData = () =>{
+            
+        }
+        
+        form.addEventListener("submit",(f)=>{
+            f.preventDefault()
+            const newvalue = newElement.value
+            const confirmvalue = confirmElement.value
+            //console.log(newvalue,confirmvalue)
+            
+
+            //valid
+            validFormData(newvalue,confirmvalue)
+
+
+            //save the data
+            saveFormData(newvalue,confirmvalue)
+            
+        })
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <form class="bg-gradient-to-b from-pink-400 to-purple-400 ... h-[400px] w-[350px]" id="updatePasswordForm">
+        <h1 class="text-white text-3xl font-semibold text-center">Update Password</h1>
+        <label class="text-white text-xs font-medium mx=16" for="newPassword">NEW PASSWORD</label><br>
+        <input type="password" placeholder="Create New Password" id="newPassword">
+        <p id="newPasswordErrMsg"></p>
+
+        <label for="confirmPassword">CONFIRM PASSWORD</label><br>
+        <input type="password" placeholder="Confirm Password" id="confirmPassword" >
+        <p id="confirmPasswordErrMsg "></p>
+
+        <button class="bg-blue-500 text-white"  id="updateBtn">Update</button>
+    </form>
+
+    <script>
+        const form= document.getElementById("updatePasswordForm")
+
+        const newElement = document.getElementById("new")
+        const confirmElement = document.getElementById("confirm")
+
+        const newerror = document.getElementById("newerror")
+        const confirmerror = document.getElementById("confirmerror")
+
+        newElement.addEventListener("blur",(f) => {
+          if(f.target.value === ""){
+            newerror.textContent="*Required"
+            newerror.style.color="red"
+          }
+          else{
+            newerror.textContent=" "
+          }
+        })
+
+        confirmElement.addEventListener("blur",(f) => {
+          if(f.target.value === ""){
+            confirmerror.textContent="*Required"
+            confirmerror.style.color="red"
+          }
+          else{
+            confirmerror.textContent=" "
+          }
+        })
+
+       
+        const validFormData = (n,c) =>{
+          console.log("Valid Method",n,c)  
+          
+          const newregex = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+          
+          //console.log("ANS:",n.match(newregex))
+          if(n === ""){
+            newerror.textContent="*Required"
+            newerror.style.color="red"
+          }
+
+          if(c === ""){
+            confirmerror.textContent="*Required"
+            confirmerror.style.color="red"
+
+          }
+
+          if(n.match(newregex) !== null){
+            console.log("Valid New Password")
+          }
+          else{
+            console.log("Invalid New Password")
+          }
+
+        }
+
+        const saveFormData = () =>{
+            
+        }
+        
+        updatePasswordForm.addEventListener("submit",(f)=>{
+            f.preventDefault()
+            const newvalue = newElement.value
+            const confirmvalue = confirmElement.value
+            //console.log(newvalue,confirmvalue)
+            
+
+            //valid
+            validFormData(newvalue,confirmvalue)
+
+
+            //save the data
+            saveFormData(newvalue,confirmvalue)
+            
+        })
+    </script>
+   
+
+    <script>
+         
+         form.addEventListener("submit",(f)=>{
+            f.preventDefault()
+            
+         })
+    </script>
+
+
+<div class="bg-gradient-to-b from-pink-500 to-purple-500 ..."></div>
